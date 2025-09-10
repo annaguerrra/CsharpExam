@@ -4,6 +4,7 @@ using CSExam.Entites;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,18 +12,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CsharpExam.Migrations
 {
     [DbContext(typeof(CSExamDbContext))]
-    partial class CSExamDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250910172028_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "9.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CSExam.Entites.Point", b =>
+            SqlServerModelBuilderExtensions.UseIdentityColumns(
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -72,7 +73,9 @@ namespace CsharpExam.Migrations
                 });
 
             modelBuilder.Entity("CSExam.Entites.TripPoints", b =>
-                {
+                {modelBuilder);
+
+            modelBuilder.Entity("CSExam.Entites.Point", b =>
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
