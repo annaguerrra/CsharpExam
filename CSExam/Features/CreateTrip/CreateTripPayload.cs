@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CSExam.Features.CreateTrip;
 
-public record CreateTripPayload
+public record CreateTripPayload(Guid UserId, string Title, string Description)
 {
+    [Required]
     public Guid UserID { get; init; }
 
     [Required]
