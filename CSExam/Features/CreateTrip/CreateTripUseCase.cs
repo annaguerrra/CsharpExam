@@ -1,0 +1,2 @@
+namespace CSExam.Features.CreateTrip;
+
