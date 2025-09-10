@@ -2,7 +2,8 @@ namespace CSExam.Entites;
 
 public class User
 {
-    public Guid Name { get; set; }
+
+    public Guid ID { get; set; }
     public required string Username { get; set; }
     public required string Password { get; set; }
 
