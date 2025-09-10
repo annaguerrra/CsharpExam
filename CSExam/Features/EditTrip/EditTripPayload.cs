@@ -3,5 +3,6 @@ namespace CSExam.Features.EditTrip;
 public record EditTripPayload(
     Guid UserID,
     Guid TripID,
-    Guid PointID
+    Guid PointID,
+    string Title
 );

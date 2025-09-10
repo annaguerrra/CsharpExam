@@ -8,8 +8,8 @@ public class Trip
 
     public Guid UserID { get; set; }
     public User User { get; set; }
-    
-    public ICollection<Point> Points { get; set; }
+
+    public ICollection<Point> Points { get; set; } = new List<Point>();
     public ICollection<TripPoints> TripPoints { get; set; }
 
 }

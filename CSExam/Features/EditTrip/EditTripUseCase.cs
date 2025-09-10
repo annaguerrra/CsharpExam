@@ -23,8 +23,16 @@ public class EditTripUseCase(
         if(trip.UserID != payload.UserID)
             return Result<EditTripResponse>.Fail("You don't have permission");
 
-        if(point is null)
-            return Result<EditTripResponse>.Fail("Point not found");
+        if (point is null)
+        {
+            var newpoint = new Point
+            {
+                Title = payload.Title
+            };
+            trip.Points.Add(newpoint);
+            
+            await ctx.SaveChangesAsync();
+        }
 
         trip.TripPoints.Add(point);
         
