@@ -11,8 +11,11 @@ public class EditTripUseCase(
     public async Task<Result<EditTripResponse>> Do(EditTripPayload payload)
     {
         var trip = await ctx.Trips
-            .Include(t => t.User)
-            .FirstOrDefaultAsync(u => u.UserID == payload.UserID && u.ID == payload.TripID);
+            .Include(t => t.TripPoints)
+            .Where(t => t.UserID == payload.UserID)
+            .FirstOrDefaultAsync();
+
+        var point = await ctx.TripPoints.FindAsync(payload.PointID);
 
         if (trip is null)
             return Result<EditTripResponse>.Fail("Trip not found");
@@ -20,16 +23,15 @@ public class EditTripUseCase(
         if(trip.UserID != payload.UserID)
             return Result<EditTripResponse>.Fail("You don't have permission");
 
-        var point = new Point
-        {
-            Title = payload.Title
-        };
+        if(point is null)
+            return Result<EditTripResponse>.Fail("Point not found");
 
-        trip.Points.Add(point);
+        trip.TripPoints.Add(point);
+        
         await ctx.SaveChangesAsync();
 
         return Result<EditTripResponse>.Success(new EditTripResponse(
-            point.Title
+            point.Point.Title
         ));
     }
 }
