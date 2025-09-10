@@ -4,10 +4,10 @@ namespace CSExam.Entites;
 
 public class CSExamDbContext(DbContextOptions opt) : DbContext(opt)
 {
-    DbSet<User> Users => Set<User>();
-    DbSet<Trip> Trips => Set<Trip>();
-    DbSet<Point> Points => Set<Point>();
-    DbSet<TripPoints> TripPoints => Set<TripPoints>();
+    public DbSet<User> Users => Set<User>();
+    public DbSet<Trip> Trips => Set<Trip>();
+    public DbSet<Point> Points => Set<Point>();
+    public DbSet<TripPoints> TripPoints => Set<TripPoints>();
 
     protected override void OnModelCreating(ModelBuilder model)
     {
