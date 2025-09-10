@@ -3,6 +3,7 @@ using CSExam.Features.CreateTrip;
 using CSExam.Features.EditTrip;
 using CSExam.Features.Login;
 using CSExam.Features.ShowTrip;
+using CSExam.Services.JWT;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,7 @@ builder.Services.AddDbContext<CSExamDbContext>(options => {
     options.UseSqlServer(sqlConn);
 });
 
-
+builder.Services.AddTransient<IJWTService, EFJWTService>();
 
 builder.Services.AddScoped<CreateTripUseCase>();
 builder.Services.AddScoped<LoginUseCase>();
