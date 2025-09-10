@@ -1,5 +1,6 @@
 using CSExam.Entites;
 using CSExam.Features.CreateTrip;
+using CSExam.Features.Login;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,7 @@ builder.Services.AddDbContext<CSExamDbContext>(options => {
 
 
 builder.Services.AddScoped<CreateTripUseCase>();
-
+builder.Services.AddScoped<LoginUseCase>();
 
 var app = builder.Build();
 

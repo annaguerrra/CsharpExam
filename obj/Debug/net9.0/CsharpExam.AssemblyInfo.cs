@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CsharpExam")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b24971bdfc9b1429d3bd8e04c95ca5fab8dbf1e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1c30adf11ad1a810704bf823242cce43de7f652")]
 [assembly: System.Reflection.AssemblyProductAttribute("CsharpExam")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CsharpExam")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
