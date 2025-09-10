@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace CSExam.Entites;
 
@@ -38,5 +39,27 @@ public class CSExamDbContext(DbContextOptions opt) : DbContext(opt)
             .WithMany(t => t.TripPoints)
             .HasForeignKey(t => t.PointID)
             .OnDelete(DeleteBehavior.NoAction);
+    }
+}
+
+public class CSExamDbContextFactory : IDesignTimeDbContextFactory<CSExamDbContext>
+{
+    public CSExamDbContext CreateDbContext(string[] args)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<CSExamDbContext>();
+
+        // Lê a connection string da variável de ambiente
+        var connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION");
+
+        if (string.IsNullOrEmpty(connectionString))
+        {
+            throw new InvalidOperationException(
+                "A variável de ambiente 'DB_CONNECTION_STRING' não foi definida."
+            );
+        }
+
+        optionsBuilder.UseSqlServer(connectionString);
+
+        return new CSExamDbContext(optionsBuilder.Options);
     }
 }

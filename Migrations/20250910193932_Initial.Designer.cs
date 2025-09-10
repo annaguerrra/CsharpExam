@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CsharpExam.Migrations
 {
     [DbContext(typeof(CSExamDbContext))]
-    [Migration("20250910174639_Initial2")]
-    partial class Initial2
+    [Migration("20250910193932_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
